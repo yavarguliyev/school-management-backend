@@ -1,7 +1,6 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const generateToken = require('../utils/generateToken');
 const { validateUserSignup, validateUserSignin } = require('../utils/validate');
-const User = require('../models/userModel');
+const User = require('../models/User');
 
 // #region In-memory storage for active tokens (for simplicity)
 const activeTokens = new Set();
@@ -45,17 +44,12 @@ const signin = async (credentials) => {
     throw new Error('Invalid email or password.');
   }
 
-  const isPasswordValid = await bcrypt.compare(password, user.password);
+  const isPasswordValid = await user.matchPassword(password)
   if (!isPasswordValid) {
     throw new Error('Invalid email or password.');
   }
 
-  const token = jwt.sign(
-    { id: user._id, role: user.role },
-    process.env.JWT_SECRET,
-    { expiresIn: '1h' }
-  );
-
+  const token = generateToken(user._id);
   activeTokens.add(token);
 
   return {

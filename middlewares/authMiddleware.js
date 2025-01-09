@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
+const ErrorResponse = require('../utils/errorResponse');
 const { JWT_SECRET } = process.env;
 
 const authenticate = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
 
   if (!token) {
-    return res.status(401).json({ message: 'Access denied. No token provided.' });
+    return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 
   try {
@@ -13,7 +14,7 @@ const authenticate = (req, res, next) => {
     req.user = decoded; // Attach decoded user to the request object
     next();
   } catch (error) {
-    return res.status(400).json({ message: 'Invalid token.' });
+    return next(new ErrorResponse('Not authorized to access this route', 401));
   }
 };
 

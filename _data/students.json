@@ -1,0 +1,29 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "2005-05-14",
+    "school": "Greenwood High School",
+    "classroom": "Physics Lab",
+    "enrollmentDate": "2023-09-01",
+    "transferred": false
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "dateOfBirth": "2006-08-22",
+    "school": "Greenwood High School",
+    "classroom": "Chemistry Lab",
+    "enrollmentDate": "2023-09-01",
+    "transferred": false
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Brown",
+    "dateOfBirth": "2004-12-11",
+    "school": "Riverside Academy",
+    "classroom": "Art Studio",
+    "enrollmentDate": "2023-09-01",
+    "transferred": false
+  }
+]

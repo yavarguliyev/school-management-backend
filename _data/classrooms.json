@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Physics Lab",
+    "capacity": 30,
+    "resources": ["projector", "whiteboard", "computer"],
+    "school": "Greenwood High School"
+  },
+  {
+    "name": "Chemistry Lab",
+    "capacity": 25,
+    "resources": ["fume hood", "microscope", "lab benches"],
+    "school": "Greenwood High School"
+  },
+  {
+    "name": "Art Studio",
+    "capacity": 20,
+    "resources": ["easels", "art supplies", "sink"],
+    "school": "Riverside Academy"
+  }
+]

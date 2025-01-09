@@ -1,5 +1,5 @@
 const { validateStudent } = require('../utils/validate');
-const Student = require('../models/studentModel');
+const Student = require('../models/Student');
 
 const createStudent = async (studentData) => {
   const { error } = validateStudent(studentData);

@@ -1,0 +1,23 @@
+[
+  {
+    "username": "teacher",
+    "email": "teacher@greenwoodhigh.com",
+    "password": "hashed_password_1",
+    "role": "teacher",
+    "associatedSchool": "Greenwood High School"
+  },
+  {
+    "username": "admin",
+    "email": "admin@riversideacademy.com",
+    "password": "hashed_password_2",
+    "role": "admin",
+    "associatedSchool": "Greenwood High School"
+  },
+  {
+    "username": "superadmin",
+    "email": "superadmin@schoolsystem.com",
+    "password": "hashed_password_3",
+    "role": "superadmin",
+    "associatedSchool": "Riverside Academy"
+  }
+]

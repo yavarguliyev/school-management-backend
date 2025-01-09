@@ -1,6 +1,6 @@
 const { signup, signin, logout } = require('../services/authService');
 
-const userSignup = async (req, res, next) => {
+const authSignup = async (req, res, next) => {
   try {
     const userData = req.body;
     const result = await signup(userData);
@@ -11,7 +11,7 @@ const userSignup = async (req, res, next) => {
   }
 };
 
-const userSignin = async (req, res, next) => {
+const authSignin = async (req, res, next) => {
   try {
     const credentials = req.body;
     const result = await signin(credentials);
@@ -22,7 +22,7 @@ const userSignin = async (req, res, next) => {
   }
 };
 
-const userLogout = async (req, res, next) => {
+const authLogout = async (req, res, next) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) {
@@ -38,7 +38,7 @@ const userLogout = async (req, res, next) => {
 };
 
 module.exports = {
-  userSignup,
-  userSignin,
-  userLogout,
+  authSignup,
+  authSignin,
+  authLogout,
 };
