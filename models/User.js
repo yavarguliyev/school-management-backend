@@ -20,7 +20,7 @@ const UserSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['superadmin', 'admin', 'teacher'],
+    enum: ['superadmin', 'admin', 'teacher', 'schooladmin'],
     required: true,
   },
   associatedSchool: {

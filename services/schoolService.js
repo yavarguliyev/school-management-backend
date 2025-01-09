@@ -1,10 +1,11 @@
 const { validateSchool } = require('../utils/validate');
+const ErrorResponse = require('../utils/errorResponse');
 const School = require('../models/School');
 
 const createSchool = async (schoolData) => {
   const { error } = validateSchool(schoolData);
   if (error) {
-    throw new Error(error.details[0].message);
+    throw new ErrorResponse(error.details[0].message, 400);
   }
 
   const newSchool = new School(schoolData);
@@ -15,7 +16,7 @@ const createSchool = async (schoolData) => {
 const updateSchool = async (schoolId, schoolData) => {
   const { error } = validateSchool(schoolData);
   if (error) {
-    throw new Error(error.details[0].message);
+    throw new ErrorResponse(error.details[0].message, 400);
   }
 
   const updatedSchool = await School.findByIdAndUpdate(schoolId, schoolData, { new: true });

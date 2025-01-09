@@ -13,10 +13,10 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.log(err));
 
-const schoolsData = JSON.parse(fs.readFileSync('./_data/Schools.json', 'utf-8'));
-const classroomsData = JSON.parse(fs.readFileSync('./_data/Classrooms.json', 'utf-8'));
-const usersData = JSON.parse(fs.readFileSync('./_data/Users.json', 'utf-8'));
-const studentsData = JSON.parse(fs.readFileSync('./_data/Students.json', 'utf-8'));
+const schoolsData = JSON.parse(fs.readFileSync('./_data/schools.json', 'utf-8'));
+const classroomsData = JSON.parse(fs.readFileSync('./_data/classrooms.json', 'utf-8'));
+const usersData = JSON.parse(fs.readFileSync('./_data/users.json', 'utf-8'));
+const studentsData = JSON.parse(fs.readFileSync('./_data/students.json', 'utf-8'));
 
 const importData = async () => {
   try {

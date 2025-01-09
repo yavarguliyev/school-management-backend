@@ -1,7 +1,6 @@
 const express = require('express');
+const { swaggerDocs, swaggerUi } = require('./utils/swagger'); 
 const dotenv = require('dotenv');
-const helmet = require('helmet');
-const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const errorHandler = require('./middlewares/errorMiddleware');
@@ -32,32 +31,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use(helmet());
-
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || '*',
-    methods: 'GET,POST,PUT,PATCH,DELETE',
-    allowedHeaders: 'X-Requested-With,Content-Type,Authorization',
-    credentials: true,
-  })
-);
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', process.env.CLIENT_URL || '*');
-
-  res.header(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, PATCH, DELETE, OPTIONS'
-  );
-
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  );
-
-  next();
-});
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/classes', classroomRoutes);
@@ -65,6 +39,10 @@ app.use('/api/v1/schools', schoolRoutes);
 app.use('/api/v1/students', studentRoutes);
 
 app.use(errorHandler);
+
+app.get('/', (req, res) => {
+  res.send('Hello from the root route!');
+});
 
 app.use((_req, res, _next) => {
   res.status(404).json({ error: 'Resource not found' });

@@ -1,10 +1,11 @@
 const { validateStudent } = require('../utils/validate');
+const ErrorResponse = require('../utils/errorResponse');
 const Student = require('../models/Student');
 
 const createStudent = async (studentData) => {
   const { error } = validateStudent(studentData);
   if (error) {
-    throw new Error(error.details[0].message);
+    throw new ErrorResponse(error.details[0].message, 400);
   }
 
   const newStudent = new Student(studentData);
@@ -15,7 +16,7 @@ const createStudent = async (studentData) => {
 const updateStudent = async (studentId, studentData) => {
   const { error } = validateStudent(studentData);
   if (error) {
-    throw new Error(error.details[0].message);
+    throw new ErrorResponse(error.details[0].message, 400);
   }
 
   const updatedStudent = await Student.findByIdAndUpdate(studentId, studentData, { new: true });

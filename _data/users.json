@@ -14,9 +14,16 @@
     "associatedSchool": "Greenwood High School"
   },
   {
+    "username": "schooladmin",
+    "email": "schooladmin@riversideacademy.com",
+    "password": "hashed_password_3",
+    "role": "schooladmin",
+    "associatedSchool": "Greenwood High School"
+  },
+  {
     "username": "superadmin",
     "email": "superadmin@schoolsystem.com",
-    "password": "hashed_password_3",
+    "password": "hashed_password_4",
     "role": "superadmin",
     "associatedSchool": "Riverside Academy"
   }

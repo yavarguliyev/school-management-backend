@@ -1,20 +1,18 @@
 const generateToken = require('../utils/generateToken');
+const ErrorResponse = require('../utils/errorResponse');
+const TokenManager = require('../utils/tokenManager');
 const { validateUserSignup, validateUserSignin } = require('../utils/validate');
 const User = require('../models/User');
-
-// #region In-memory storage for active tokens (for simplicity)
-const activeTokens = new Set();
-// #endregion
 
 const signup = async (userData) => {
   const { error } = validateUserSignup(userData);
   if (error) {
-    throw new Error(error.details[0].message);
+    throw new ErrorResponse(error.details[0].message, 400);
   }
 
   const existingUser = await User.findOne({ email: userData.email });
   if (existingUser) {
-    throw new Error('User with this email already exists.');
+    throw new ErrorResponse('User with this email already exists.', 400);
   }
 
   const newUser = new User(userData);
@@ -41,16 +39,16 @@ const signin = async (credentials) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    throw new Error('Invalid email or password.');
+    throw new ErrorResponse('Invalid credentials', 401);
   }
 
   const isPasswordValid = await user.matchPassword(password)
   if (!isPasswordValid) {
-    throw new Error('Invalid email or password.');
+    throw new ErrorResponse('Invalid credentials', 401);
   }
 
-  const token = generateToken(user._id);
-  activeTokens.add(token);
+  const token = generateToken(user);
+  TokenManager.addToken(token);
 
   return {
     message: 'Login successful.',
@@ -65,12 +63,11 @@ const signin = async (credentials) => {
 };
 
 const logout = async (token) => {
-  if (activeTokens.has(token)) {
-    activeTokens.delete(token);
-
+  if (TokenManager.hasToken(token)) {
+    TokenManager.removeToken(token);
     return { message: 'Logout successful.' };
   } else {
-    throw new Error('Invalid token or user already logged out.');
+    throw new ErrorResponse('Invalid token or user already logged out.', 400);
   }
 };
 
