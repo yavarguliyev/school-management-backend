@@ -1,6 +1,8 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
+const baseUrl = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : process.env.LOCAL_URL;
+
 const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
@@ -11,7 +13,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000'
+        url: baseUrl
       },
     ],
     components: {
