@@ -40,7 +40,7 @@ app.use('/api/v1/students', studentRoutes);
 
 app.use(errorHandler);
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('Hello from the root route!');
 });
 

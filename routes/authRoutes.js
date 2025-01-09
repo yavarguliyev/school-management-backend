@@ -4,7 +4,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /auth/signup:
+ * /api/v1/auth/signup:
  *   post:
  *     summary: Registers a new user
  *     description: Creates a new user by providing user data.
@@ -38,7 +38,7 @@ router.post('/signup', authSignup);
 
 /**
  * @swagger
- * /auth/signin:
+ * /api/v1/auth/signin:
  *   post:
  *     summary: User login
  *     description: Logs in an existing user and returns an authentication token.
@@ -77,7 +77,7 @@ router.post('/signin', authSignin);
 
 /**
  * @swagger
- * /auth/logout:
+ * /api/v1/auth/logout:
  *   post:
  *     summary: Logs out the user
  *     description: Logs out the currently authenticated user by invalidating their token.
