@@ -9,6 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const classroomRoutes = require('./routes/classroomRoutes');
 const schoolRoutes = require('./routes/schoolRoutes');
 const studentRoutes = require('./routes/studentRoutes');
+const rateLimit = require('express-rate-limit');
 
 dotenv.config();
 
@@ -19,6 +20,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+});
+app.use(limiter);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
