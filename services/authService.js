@@ -1,6 +1,5 @@
 const generateToken = require('../utils/generateToken');
 const ErrorResponse = require('../utils/errorResponse');
-const TokenManager = require('../utils/tokenManager');
 const { validateUserSignup, validateUserSignin } = require('../utils/validate');
 const User = require('../models/User');
 
@@ -48,7 +47,6 @@ const signin = async (credentials) => {
   }
 
   const token = generateToken(user);
-  TokenManager.addToken(token);
 
   return {
     message: 'Login successful.',
@@ -62,17 +60,7 @@ const signin = async (credentials) => {
   };
 };
 
-const logout = async (token) => {
-  if (TokenManager.hasToken(token)) {
-    TokenManager.removeToken(token);
-    return { message: 'Logout successful.' };
-  } else {
-    throw new ErrorResponse('Invalid token or user already logged out.', 400);
-  }
-};
-
 module.exports = {
   signup,
-  signin,
-  logout,
+  signin
 };

@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require('../utils/errorResponse');
-const TokenManager = require('../utils/tokenManager');
 const { JWT_SECRET } = process.env;
 
 const authenticate = (req, res, next) => {
@@ -8,10 +7,6 @@ const authenticate = (req, res, next) => {
 
   if (!token) {
     return next(new ErrorResponse('Not authorized to access this route', 401));
-  }
-
-  if (!TokenManager.hasToken(token)) {
-    return next(new ErrorResponse('Invalid or expired token', 401));
   }
 
   try {
