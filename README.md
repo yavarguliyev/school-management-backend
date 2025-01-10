@@ -1,8 +1,8 @@
 # School Management API
 
-Welcome to the **School Management API**! This is a RESTful API built with **Node.js**, **Express**, and **MongoDB** designed to manage schools, classrooms, students, and users. It provides features such as user authentication, CRUD operations, and data validation. 
+#### Welcome to the **School Management API**! This is a RESTful API built with **Node.js**, **Express**, and **MongoDB** designed to manage schools, classrooms, students, and users. It provides features such as user authentication, CRUD operations, and data validation. 
 
-The application is deployed on **AWS EC2**, making it accessible online for real-world usage.
+#### The application is deployed on **AWS EC2**, making it accessible online for real-world usage.
 
 ---
 
@@ -52,44 +52,68 @@ The application is deployed on **AWS EC2**, making it accessible online for real
 
 To get started with the School Management API, follow the steps below to set up the application on your local machine.
 
+---
+
 ### Prerequisites
-Make sure you have the following installed:
+
+#### Make sure you have the following installed:
+
 - **Node.js** (v16 or higher)
 - **MongoDB** (or use a cloud MongoDB service like MongoDB Atlas)
 - **npm** (Node Package Manager)
 
+---
+
 ### Installation
+
 1. Clone this repository to your local machine:
+
    ```bash
    git clone git@github.com:yavarguliyev/school-management-backend.git
    cd school-management-backend
    npm install
    cp .env.example .env
+   ```
+
+---
 
 ## Modify the `.env` file
-Modify the `.env` file with your environment-specific configurations, such as:
+
+#### Modify the `.env` file with your environment-specific configurations, such as:
+
 - `MONGO_URI`: MongoDB connection string.
 - `JWT_SECRET`: Secret key for signing JWT tokens.
 - `CLIENT_URL`: URL of the frontend (if applicable).
 
-Run the application in development mode:
+---
+
+#### Run the application in development mode:
 ```bash
 npm run dev
+```
 
-The API will be accessible at [http://localhost:3000](http://localhost:3000).
+---
 
-For production, use the following:
+#### The API will be accessible at [http://localhost:3000](http://localhost:3000).
+
+---
+
+#### For production, use the following:
 
 ```bash
 npm start
+```
+---
 
 # API Documentation
 
-You can explore and test the API using Swagger UI. After running the app, navigate to the following URL:
+#### You can explore and test the API using Swagger UI. After running the app, navigate to the following URL:
 
 [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
-The API supports the following routes:
+---
+
+#### The API supports the following routes:
 
 ### Authentication Routes
 - **POST /api/v1/auth/register**: Register a new user.
@@ -116,6 +140,8 @@ The API supports the following routes:
 - **PUT /api/v1/students/:id**: Update a student.
 - **DELETE /api/v1/students/:id**: Delete a student.
 
+---
+
 ## Environment Variables
 
 The following environment variables need to be defined in the `.env` file:
@@ -125,17 +151,23 @@ The following environment variables need to be defined in the `.env` file:
 - `CLIENT_URL`: URL for your frontend (if applicable).
 - `PORT`: Port to run the application on (default is `3000`).
 
+---
+
 ## Testing
 
 You can run tests using the following command:
 
 ```bash
 npm run test
+```
 
 To run tests in watch mode (automatically running tests on file changes), use:
 
 ```bash
 npm run test:watch
+```
+
+---
 
 ## Deployment
 
@@ -149,3 +181,126 @@ The application is deployed on **AWS EC2** for production use. You can deploy th
 ```bash
 npm install
 npm start
+```
+
+---
+
+## Seeder Data
+
+This project includes a seeder script (seeder.js) that allows you to import and remove sample data from the MongoDB database.
+
+To insert the sample data into the database, run:
+
+```bash
+npm run data:import
+```
+
+To remove all data from the database, run:
+
+```bash
+npm run data:destroy
+```
+
+Here is an example of the data:
+
+# User Data:
+
+```bash
+[
+  {
+    "username": "teacher",
+    "email": "teacher@greenwoodhigh.com",
+    "password": "hashed_password_1",
+    "role": "teacher",
+    "associatedSchool": "Greenwood High School"
+  },
+  {
+    "username": "admin",
+    "email": "admin@riversideacademy.com",
+    "password": "hashed_password_2",
+    "role": "admin",
+    "associatedSchool": "Greenwood High School"
+  },
+  {
+    "username": "schooladmin",
+    "email": "schooladmin@riversideacademy.com",
+    "password": "hashed_password_3",
+    "role": "schooladmin",
+    "associatedSchool": "Greenwood High School"
+  },
+  {
+    "username": "superadmin",
+    "email": "superadmin@schoolsystem.com",
+    "password": "hashed_password_4",
+    "role": "superadmin",
+    "associatedSchool": "Riverside Academy"
+  }
+]
+```
+
+---
+
+# Student Data:
+
+```bash
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "2005-05-14",
+    "school": "Greenwood High School",
+    "classroom": "Physics Lab",
+    "enrollmentDate": "2023-09-01",
+    "transferred": false
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "dateOfBirth": "2006-08-22",
+    "school": "Greenwood High School",
+    "classroom": "Chemistry Lab",
+    "enrollmentDate": "2023-09-01",
+    "transferred": false
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Brown",
+    "dateOfBirth": "2004-12-11",
+    "school": "Riverside Academy",
+    "classroom": "Art Studio",
+    "enrollmentDate": "2023-09-01",
+    "transferred": false
+  }
+]
+```
+
+---
+
+# Classroom Data:
+
+```bash
+[
+  {
+    "name": "Physics Lab",
+    "capacity": 30,
+    "resources": ["projector", "whiteboard", "computer"],
+    "school": "Greenwood High School"
+  },
+  {
+    "name": "Chemistry Lab",
+    "capacity": 25,
+    "resources": ["fume hood", "microscope", "lab benches"],
+    "school": "Greenwood High School"
+  },
+  {
+    "name": "Art Studio",
+    "capacity": 20,
+    "resources": ["easels", "art supplies", "sink"],
+    "school": "Riverside Academy"
+  }
+]
+```
+
+# License
+
+### MIT License. See LICENSE for details.
