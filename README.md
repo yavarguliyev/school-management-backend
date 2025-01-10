@@ -301,6 +301,25 @@ Here is an example of the data:
 ]
 ```
 
+# School Data:
+
+```bash
+[
+  {
+    "name": "Greenwood High School",
+    "address": "123 Elm Street, Springfield",
+    "contactNumber": "555-1234",
+    "email": "contact@greenwoodhigh.com"
+  },
+  {
+    "name": "Riverside Academy",
+    "address": "456 Oak Avenue, Rivertown",
+    "contactNumber": "555-5678",
+    "email": "info@riversideacademy.com"
+  }
+]
+```
+
 # License
 
 ### MIT License. See LICENSE for details.
