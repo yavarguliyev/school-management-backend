@@ -1,8 +1,8 @@
-const schoolService = require('../../services/schoolService');
-const { validateSchool } = require('../../utils/validate');
+const schoolService = require('../../src/services/schoolService');
+const { validateSchool } = require('../../src/utils/validate');
 
-jest.mock('../../models/School');
-jest.mock('../../utils/validate');
+jest.mock('../../src/models/School');
+jest.mock('../../src/utils/validate');
 
 describe('School Service', () => {
   describe('createSchool', () => {

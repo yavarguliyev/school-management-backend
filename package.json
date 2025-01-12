@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index",
-    "dev": "nodemon index",
+    "start": "NODE_ENV=production node src/index",
+    "dev": "nodemon src/index",
     "test": "cross-env NODE_ENV=test jest",
-    "data:import": "node seeder -i",
-    "data:destroy": "node seeder -d"
+    "data:import": "node src/seeder -i",
+    "data:destroy": "node src/seeder -d"
   },
   "keywords": [],
   "author": "Yavar Guliyev",

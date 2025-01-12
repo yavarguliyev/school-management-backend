@@ -1,12 +1,12 @@
-const authService = require('../../services/authService');
-const User = require('../../models/User');
-const generateToken = require('../../utils/generateToken');
-const { validateUserSignup, validateUserSignin } = require('../../utils/validate');
+const authService = require('../../src/services/authService');
+const User = require('../../src/models/User');
+const generateToken = require('../../src/utils/generateToken');
+const { validateUserSignup, validateUserSignin } = require('../../src/utils/validate');
 
-jest.mock('../../models/User');
-jest.mock('../../utils/generateToken');
-jest.mock('../../utils/validate');
-jest.mock('../../utils/errorResponse');
+jest.mock('../../src/models/User');
+jest.mock('../../src/utils/generateToken');
+jest.mock('../../src/utils/validate');
+jest.mock('../../src/utils/errorResponse');
 
 describe('Auth Service', () => {
   describe('signup', () => {

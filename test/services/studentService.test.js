@@ -1,9 +1,9 @@
-const studentService = require('../../services/studentService');
-const Student = require('../../models/Student');
-const { validateStudent } = require('../../utils/validate');
+const studentService = require('../../src/services/studentService');
+const Student = require('../../src/models/Student');
+const { validateStudent } = require('../../src/utils/validate');
 
-jest.mock('../../models/Student');
-jest.mock('../../utils/validate');
+jest.mock('../../src/models/Student');
+jest.mock('../../src/utils/validate');
 
 describe('Student Service', () => {
   describe('createStudent', () => {

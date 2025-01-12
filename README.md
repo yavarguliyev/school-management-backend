@@ -116,8 +116,8 @@ npm start
 #### The API supports the following routes:
 
 ### Authentication Routes
-- **POST /api/v1/auth/register**: Register a new user.
-- **POST /api/v1/auth/login**: Log in a user and return a JWT token.
+- **POST /api/v1/auth/signup**: Register a new user.
+- **POST /api/v1/auth/signin**: Log in a user and return a JWT token.
 
 ### School Routes
 - **GET /api/v1/schools**: Get all schools.
